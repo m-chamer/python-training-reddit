@@ -33,6 +33,31 @@ def add_digit(table, digit):
     return result
 
 
+def add_lists(table1, table2):
+    table1.reverse()
+    table2.reverse()
+    if len(table1) > len(table2):
+        shorter = table2
+        longer = table1
+    else:
+        shorter = table1
+        longer = table2
+    for idx, element in enumerate(shorter):
+        longer[idx] += element
+        if longer[idx] >= 10:
+            longer[idx] %= 10
+            try:
+                longer[idx+1] += 1
+            except IndexError:
+                longer.insert(idx+1, 1)
+    return list(reversed(longer))
+
+
+
+def add_number(table, number):
+    return add_lists(table, int_to_list(number))
+
+
 to_print = list()
 to_print.append(list_to_int(tab))
 to_print.append(add_digit(tab, 9))
