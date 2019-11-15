@@ -9,6 +9,16 @@ def list_to_int(table):
     return result
 
 
+def int_to_list(number):
+    result = list()
+    i = 10
+    while(number):
+        digit = number % i
+        result.append(digit)
+        number /= i
+    return list(reversed(result))
+
+
 def add_digit(table, digit):
     result = [0 for x in range(len(table))]
     for i in range(len(table) - 1, -1, -1):
@@ -26,4 +36,6 @@ def add_digit(table, digit):
 to_print = list()
 to_print.append(list_to_int(tab))
 to_print.append(add_digit(tab, 9))
+to_print.append(int_to_list(123))
 print(to_print)
+
